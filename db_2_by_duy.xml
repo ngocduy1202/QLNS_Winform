@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <SqlDataSource Name="SQL Data Source 1" ComponentName="dashboardSqlDataSource1">
+      <Connection Name="localhost_QLNS_Connection" ProviderKey="MSSqlServer">
+        <Parameters>
+          <Parameter Name="server" Value="localhost" />
+          <Parameter Name="database" Value="QLNS" />
+          <Parameter Name="useIntegratedSecurity" Value="True" />
+          <Parameter Name="read only" Value="1" />
+          <Parameter Name="generateConnectionHelper" Value="false" />
+          <Parameter Name="userid" Value="" />
+          <Parameter Name="password" Value="" />
+        </Parameters>
+      </Connection>
+      <Query Type="SelectQuery" Name="NHANVIEN">
+        <Tables>
+          <Table Name="NHANVIEN" X="30" Y="30" Width="125" Height="222" />
+          <Table Name="PHANCONG" X="185" Y="30" Width="125" Height="96" />
+          <Table Name="PHONGBAN" X="30" Y="300" Width="125" Height="114" />
+          <Table Name="CHUCVU" X="190" Y="160" Width="125" Height="132" />
+          <Table Name="PHUCAP" X="345" Y="30" Width="125" Height="114" />
+          <Table Name="DUAN" X="500" Y="30" Width="125" Height="132" />
+          <Relation Type="Inner" Parent="NHANVIEN" Nested="PHANCONG">
+            <KeyColumn Parent="manv" Nested="manv" />
+          </Relation>
+          <Relation Type="Inner" Parent="NHANVIEN" Nested="PHONGBAN">
+            <KeyColumn Parent="mapb" Nested="mapb" />
+          </Relation>
+          <Relation Type="Inner" Parent="NHANVIEN" Nested="CHUCVU">
+            <KeyColumn Parent="macv" Nested="macv" />
+          </Relation>
+          <Relation Type="Inner" Parent="NHANVIEN" Nested="PHUCAP">
+            <KeyColumn Parent="mapc" Nested="mapc" />
+          </Relation>
+          <Relation Type="Inner" Parent="PHANCONG" Nested="DUAN">
+            <KeyColumn Parent="mada" Nested="mada" />
+          </Relation>
+        </Tables>
+        <Columns>
+          <Column Table="NHANVIEN" Name="manv" />
+          <Column Table="NHANVIEN" Name="hoten" />
+          <Column Table="NHANVIEN" Name="ngaysinh" />
+          <Column Table="NHANVIEN" Name="sdt" />
+          <Column Table="NHANVIEN" Name="gioitinh" />
+          <Column Table="NHANVIEN" Name="ngayvaolam" />
+          <Column Table="NHANVIEN" Name="mapb" />
+          <Column Table="NHANVIEN" Name="macv" />
+          <Column Table="NHANVIEN" Name="mapc" />
+          <Column Table="PHANCONG" Name="mada" />
+          <Column Table="PHANCONG" Name="manv" Alias="PHANCONG_manv" />
+          <Column Table="PHUCAP" Name="mapc" Alias="PHUCAP_mapc" />
+          <Column Table="PHUCAP" Name="tenpc" />
+          <Column Table="PHUCAP" Name="tienphucap" />
+          <Column Table="CHUCVU" Name="macv" Alias="CHUCVU_macv" />
+          <Column Table="CHUCVU" Name="tencv" />
+          <Column Table="CHUCVU" Name="luongcb" />
+          <Column Table="CHUCVU" Name="hsl" />
+          <Column Table="PHONGBAN" Name="mapb" Alias="PHONGBAN_mapb" />
+          <Column Table="PHONGBAN" Name="tenpb" />
+          <Column Table="PHONGBAN" Name="sdt" Alias="PHONGBAN_sdt" />
+          <Column Table="DUAN" Name="mada" Alias="DUAN_mada" />
+          <Column Table="DUAN" Name="tenda" />
+          <Column Table="DUAN" Name="kinhphi" />
+          <Column Table="DUAN" Name="mota" />
+        </Columns>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="NHANVIEN">
+            <Field Name="manv" Type="Int32" />
+            <Field Name="hoten" Type="String" />
+            <Field Name="ngaysinh" Type="DateTime" />
+            <Field Name="sdt" Type="String" />
+            <Field Name="gioitinh" Type="String" />
+            <Field Name="ngayvaolam" Type="DateTime" />
+            <Field Name="mapb" Type="Int32" />
+            <Field Name="macv" Type="Int32" />
+            <Field Name="mapc" Type="Int32" />
+            <Field Name="mada" Type="Int32" />
+            <Field Name="PHANCONG_manv" Type="Int32" />
+            <Field Name="PHUCAP_mapc" Type="Int32" />
+            <Field Name="tenpc" Type="String" />
+            <Field Name="tienphucap" Type="Int32" />
+            <Field Name="CHUCVU_macv" Type="Int32" />
+            <Field Name="tencv" Type="String" />
+            <Field Name="luongcb" Type="Int32" />
+            <Field Name="hsl" Type="Double" />
+            <Field Name="PHONGBAN_mapb" Type="Int32" />
+            <Field Name="tenpb" Type="String" />
+            <Field Name="PHONGBAN_sdt" Type="String" />
+            <Field Name="DUAN_mada" Type="Int32" />
+            <Field Name="tenda" Type="String" />
+            <Field Name="kinhphi" Type="Int32" />
+            <Field Name="mota" Type="String" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Pie ComponentName="pieDashboardItem1" Name="Chức vụ" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tencv" DefaultId="DataItem0" />
+        <Measure DataMember="manv" Name="Tỉ lệ chức vụ" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+    <Chart ComponentName="chartDashboardItem1" Name="Dự án" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tenda" DefaultId="DataItem0" />
+        <Measure DataMember="PHANCONG_manv" Name="Số lượng nhân viên" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem2" Name="Phòng ban" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tenpb" DefaultId="DataItem0" />
+        <Measure DataMember="manv" Name="Số lượng nhân viên" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem3" Name="Kinh phí dự án" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tenda" DefaultId="DataItem0" />
+        <Measure DataMember="kinhphi" SummaryType="Max" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple Name="Kinh phí">
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem2" Name="Tỉ lệ giới tính của nhân sự" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="gioitinh" DefaultId="DataItem0" />
+        <Measure DataMember="manv" Name="Giới tính" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+    <Chart ComponentName="chartDashboardItem4" Name="Lương cơ bản" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tencv" DefaultId="DataItem0" />
+        <Measure DataMember="luongcb" Name="Mức lương" SummaryType="Max" DefaultId="DataItem2" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem2" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem5" Name="Hệ số lương" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tencv" DefaultId="DataItem0" />
+        <Measure DataMember="hsl" Name="Hệ số" SummaryType="Max" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem6" Name="Phụ cấp" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tenpc" DefaultId="DataItem0" />
+        <Measure DataMember="tienphucap" SummaryType="Max" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple Name="Mức phụ cấp">
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem7" Name="Số lượng nhân viên theo chức vụ" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tencv" DefaultId="DataItem0" />
+        <Measure DataMember="manv" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple Name="Số lượng nhân viên">
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem3" Name="Tỉ lệ nhân viên theo phòng ban" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tenpb" DefaultId="DataItem0" />
+        <Measure DataMember="manv" Name="%" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical" Weight="100">
+      <LayoutGroup Weight="56.388415672913119">
+        <LayoutGroup Orientation="Vertical" Weight="37.989323843416372">
+          <LayoutItem DashboardItem="chartDashboardItem3" Weight="47.432024169184288" />
+          <LayoutItem DashboardItem="pieDashboardItem1" Weight="52.567975830815712" />
+        </LayoutGroup>
+        <LayoutGroup Weight="62.010676156583628">
+          <LayoutItem DashboardItem="chartDashboardItem1" Weight="37.015781922525107" />
+          <LayoutItem DashboardItem="chartDashboardItem4" Weight="33.715925394548066" />
+          <LayoutItem DashboardItem="chartDashboardItem5" Weight="29.26829268292683" />
+        </LayoutGroup>
+      </LayoutGroup>
+      <LayoutGroup Weight="43.611584327086881">
+        <LayoutItem DashboardItem="chartDashboardItem2" Weight="28.82562277580071" />
+        <LayoutGroup Orientation="Vertical" Weight="26.690391459074732">
+          <LayoutItem DashboardItem="pieDashboardItem2" Weight="50" />
+          <LayoutItem DashboardItem="chartDashboardItem7" Weight="50" />
+        </LayoutGroup>
+        <LayoutItem DashboardItem="chartDashboardItem6" Weight="23.932384341637011" />
+        <LayoutItem DashboardItem="pieDashboardItem3" Weight="20.551601423487543" />
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

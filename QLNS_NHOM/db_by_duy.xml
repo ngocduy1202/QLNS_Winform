@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <SqlDataSource Name="SQL Data Source 1" ComponentName="dashboardSqlDataSource1">
+      <Connection Name="localhost_QLNS_Connection" ProviderKey="MSSqlServer">
+        <Parameters>
+          <Parameter Name="server" Value="localhost" />
+          <Parameter Name="database" Value="QLNS" />
+          <Parameter Name="useIntegratedSecurity" Value="True" />
+          <Parameter Name="read only" Value="1" />
+          <Parameter Name="generateConnectionHelper" Value="false" />
+        </Parameters>
+      </Connection>
+      <Query Type="SelectQuery" Name="NHANVIEN">
+        <Tables>
+          <Table Name="NHANVIEN" X="30" Y="30" Width="125" Height="222" />
+          <Table Name="PHONGBAN" X="185" Y="30" Width="125" Height="114" />
+          <Table Name="CHUCVU" X="340" Y="30" Width="125" Height="132" />
+          <Table Name="PHUCAP" X="495" Y="30" Width="125" Height="114" />
+          <Table Name="PHANCONG" X="650" Y="30" Width="125" Height="96" />
+          <Table Name="DUAN" X="805" Y="30" Width="125" Height="132" />
+          <Relation Type="Inner" Parent="NHANVIEN" Nested="PHONGBAN">
+            <KeyColumn Parent="mapb" Nested="mapb" />
+          </Relation>
+          <Relation Type="Inner" Parent="NHANVIEN" Nested="CHUCVU">
+            <KeyColumn Parent="macv" Nested="macv" />
+          </Relation>
+          <Relation Type="Inner" Parent="NHANVIEN" Nested="PHUCAP">
+            <KeyColumn Parent="mapc" Nested="mapc" />
+          </Relation>
+          <Relation Type="Inner" Parent="NHANVIEN" Nested="PHANCONG">
+            <KeyColumn Parent="manv" Nested="manv" />
+          </Relation>
+          <Relation Type="Inner" Parent="PHANCONG" Nested="DUAN">
+            <KeyColumn Parent="mada" Nested="mada" />
+          </Relation>
+        </Tables>
+        <Columns>
+          <Column Table="NHANVIEN" Name="manv" />
+          <Column Table="NHANVIEN" Name="hoten" />
+          <Column Table="NHANVIEN" Name="ngaysinh" />
+          <Column Table="NHANVIEN" Name="sdt" />
+          <Column Table="NHANVIEN" Name="gioitinh" />
+          <Column Table="NHANVIEN" Name="ngayvaolam" />
+          <Column Table="NHANVIEN" Name="mapb" />
+          <Column Table="NHANVIEN" Name="macv" />
+          <Column Table="NHANVIEN" Name="mapc" />
+          <Column Table="PHONGBAN" Name="mapb" Alias="PHONGBAN_mapb" />
+          <Column Table="PHONGBAN" Name="tenpb" />
+          <Column Table="PHONGBAN" Name="sdt" Alias="PHONGBAN_sdt" />
+          <Column Table="CHUCVU" Name="macv" Alias="CHUCVU_macv" />
+          <Column Table="CHUCVU" Name="tencv" />
+          <Column Table="CHUCVU" Name="luongcb" />
+          <Column Table="CHUCVU" Name="hsl" />
+          <Column Table="PHUCAP" Name="mapc" Alias="PHUCAP_mapc" />
+          <Column Table="PHUCAP" Name="tenpc" />
+          <Column Table="PHUCAP" Name="tienphucap" />
+          <Column Table="PHANCONG" Name="mada" />
+          <Column Table="PHANCONG" Name="manv" Alias="PHANCONG_manv" />
+          <Column Table="DUAN" Name="mada" Alias="DUAN_mada" />
+          <Column Table="DUAN" Name="tenda" />
+          <Column Table="DUAN" Name="kinhphi" />
+          <Column Table="DUAN" Name="mota" />
+          <AllColumns Table="PHONGBAN" />
+          <AllColumns Table="NHANVIEN" />
+          <AllColumns Table="CHUCVU" />
+          <AllColumns Table="PHUCAP" />
+          <AllColumns Table="PHANCONG" />
+          <AllColumns Table="DUAN" />
+        </Columns>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="NHANVIEN">
+            <Field Name="manv" Type="Int32" />
+            <Field Name="hoten" Type="String" />
+            <Field Name="ngaysinh" Type="DateTime" />
+            <Field Name="sdt" Type="String" />
+            <Field Name="gioitinh" Type="String" />
+            <Field Name="ngayvaolam" Type="DateTime" />
+            <Field Name="mapb" Type="Int32" />
+            <Field Name="macv" Type="Int32" />
+            <Field Name="mapc" Type="Int32" />
+            <Field Name="PHONGBAN_mapb" Type="Int32" />
+            <Field Name="tenpb" Type="String" />
+            <Field Name="PHONGBAN_sdt" Type="String" />
+            <Field Name="CHUCVU_macv" Type="Int32" />
+            <Field Name="tencv" Type="String" />
+            <Field Name="luongcb" Type="Int32" />
+            <Field Name="hsl" Type="Double" />
+            <Field Name="PHUCAP_mapc" Type="Int32" />
+            <Field Name="tenpc" Type="String" />
+            <Field Name="tienphucap" Type="Int32" />
+            <Field Name="mada" Type="Int32" />
+            <Field Name="PHANCONG_manv" Type="Int32" />
+            <Field Name="DUAN_mada" Type="Int32" />
+            <Field Name="tenda" Type="String" />
+            <Field Name="kinhphi" Type="Int32" />
+            <Field Name="mota" Type="String" />
+            <Field Name="PHONGBAN_mapb0" Type="Int32" />
+            <Field Name="PHONGBAN_tenpb" Type="String" />
+            <Field Name="PHONGBAN_sdt0" Type="String" />
+            <Field Name="NHANVIEN_manv" Type="Int32" />
+            <Field Name="NHANVIEN_hoten" Type="String" />
+            <Field Name="NHANVIEN_ngaysinh" Type="DateTime" />
+            <Field Name="NHANVIEN_sdt" Type="String" />
+            <Field Name="NHANVIEN_gioitinh" Type="String" />
+            <Field Name="NHANVIEN_ngayvaolam" Type="DateTime" />
+            <Field Name="NHANVIEN_mapb" Type="Int32" />
+            <Field Name="NHANVIEN_macv" Type="Int32" />
+            <Field Name="NHANVIEN_mapc" Type="Int32" />
+            <Field Name="CHUCVU_macv0" Type="Int32" />
+            <Field Name="CHUCVU_tencv" Type="String" />
+            <Field Name="CHUCVU_luongcb" Type="Int32" />
+            <Field Name="CHUCVU_hsl" Type="Double" />
+            <Field Name="PHUCAP_mapc0" Type="Int32" />
+            <Field Name="PHUCAP_tenpc" Type="String" />
+            <Field Name="PHUCAP_tienphucap" Type="Int32" />
+            <Field Name="PHANCONG_mada" Type="Int32" />
+            <Field Name="PHANCONG_manv0" Type="Int32" />
+            <Field Name="DUAN_mada0" Type="Int32" />
+            <Field Name="DUAN_tenda" Type="String" />
+            <Field Name="DUAN_kinhphi" Type="Int32" />
+            <Field Name="DUAN_mota" Type="String" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tenda" DefaultId="DataItem1" />
+        <Measure DataMember="DUAN_kinhphi" Name="Kinh phí dự án" DefaultId="DataItem0" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem1" Name="Pies 1" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Measure DataMember="tienphucap" Name="Phụ cấp" SummaryType="Max" DefaultId="DataItem0" />
+        <Dimension DataMember="tenpc" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem0" />
+      </Values>
+    </Pie>
+    <Chart ComponentName="chartDashboardItem2" Name="Chart 2" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tencv" DefaultId="DataItem0" />
+        <Measure DataMember="manv" Name="Số lượng nhân viên" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem3" Name="Chart 3" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tencv" DefaultId="DataItem0" />
+        <Measure DataMember="luongcb" Name="Lương cơ bản" SummaryType="Average" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem4" Name="Chart 4" DataSource="dashboardSqlDataSource1" DataMember="NHANVIEN">
+      <DataItems>
+        <Dimension DataMember="tenda" DefaultId="DataItem0" />
+        <Measure DataMember="PHANCONG_manv" Name="Nhân viên tham gia" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical" Weight="100">
+      <LayoutGroup Weight="49.914821124361161">
+        <LayoutItem DashboardItem="chartDashboardItem1" Weight="50" />
+        <LayoutItem DashboardItem="pieDashboardItem1" Weight="50" />
+      </LayoutGroup>
+      <LayoutGroup Weight="50.085178875638839">
+        <LayoutItem DashboardItem="chartDashboardItem3" Weight="25.533807829181494" />
+        <LayoutItem DashboardItem="chartDashboardItem2" Weight="24.466192170818506" />
+        <LayoutItem DashboardItem="chartDashboardItem4" Weight="50" />
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
